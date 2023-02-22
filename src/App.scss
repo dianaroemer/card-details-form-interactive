@@ -6,37 +6,43 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+#page-container {
+  position: relative;
+  width: 100vw;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+  // height: 100%; 
+  max-width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
-  // font-size: 1rem;
+#content-wrap {
+  padding-bottom: 14px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.attribution {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  font-size: 11px;
+  height: 1rem;
+  text-align: center;
+  // color: _colors.$MediumGrey 
+}
+
+.attribution a {
+  color: _colors.$LinearGradient;
+  transition: .11s;
+}
+
+.attribution a:hover {
+  color: _colors.$DarkGrayishViolet;
 }
