@@ -2,7 +2,7 @@
   "name": "card-details-form-interactive",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://dianaroemer.github.io/news-homepage/",
+  "homepage": "https://dianaroemer.github.io/card-details-form-interactive/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
