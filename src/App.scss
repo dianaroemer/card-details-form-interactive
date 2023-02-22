@@ -1,5 +1,9 @@
+@use 'styles/_colors' as _colors;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .App-logo {
@@ -20,12 +24,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+  // font-size: 1rem;
 }
 
 @keyframes App-logo-spin {
