@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.scss';
+import CardDetailsForm from './components/CardDetailsForm';
 
 function App() {
   return (
@@ -9,11 +9,10 @@ function App() {
           <h1 className="sr-only">Card Details Form Interactive</h1>
 
           <div className='component-container'>
-            {/* <NewsHomepage/> */}
-    
+            <CardDetailsForm/>
+
             {/* And the content goes here. */}
 
-            I am the page's content
 
           </div>
 
