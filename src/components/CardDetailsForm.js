@@ -13,13 +13,21 @@ function CardDetailsForm(props) {
             <div className='displayCardContainer'>
                 Aaaall of that goes here
                 Some kinda background image, woooohoo look at that
-                then there's the backwards card
-                lastly there's the actual card, which is slightly translated downwards to drift below the image
+                Backwards card Container
+                    Backwards Card image   
+                    CVC text
+                Front facing card container
+                    Front facing CC image  
+                    CC Logo?
+                    Credit Card Numbers
+                    Credit Card name
+                    Credit Card Expiration Date``
+
             </div>
 
             <div className='cardFormContainer'>
                 This is variable! It will either be
-                The form!
+                The input form or the completed form!
 
                 Input form Container!
 
