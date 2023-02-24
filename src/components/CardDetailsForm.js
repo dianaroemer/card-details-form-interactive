@@ -52,7 +52,11 @@ function CardDetailsForm(props) {
                 </div>
 
                 <div className='frontCardContainer'>
-                <img src={bgCardFront} alt='The front of a credit card' className='bg-card-front'/>
+
+                    <img src={bgCardFront} alt='The drop shadow for the front of the credit card' className='bg-card-front-shadow'/>
+                    <img src={bgCardFront} alt='The front of a credit card' className='bg-card-front'/>
+                    
+
                 </div>
 
 

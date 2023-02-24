@@ -9,6 +9,9 @@
 
 .mobile-bg-image {
     width: 100%;
+    // filter: drop-shadow(-20px 80px 20px rgb(226, 226, 226));
+    // opacity: 9%;
+
 }
 
 .desktop-bg-image {
@@ -17,18 +20,33 @@
 
 .backwardCardContainer {
     position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 20px;
+    text-align: end;
+    // right: 20px;
+    // background-color: red;
 }
 
 .bg-card-back {
     position: relative;
-    width: 76%;
-    transform: translate(10%, -135%)
+    width: 285px;
+    margin-right: 16px;
+    top: 13px;
+    // left: 20%
+    // top: 33px;
+
+    // top: 20px;
+    // bottom: 500%;
+    // transform: translate(10%, -135%)
 }
 
 .cvcContent {
     position: absolute;
-    left: 80%;
-    bottom: 173%;
+    top: 72px;
+    right: 53px;
+    // left: 80%;
+    // bottom: 173%;
     color: white;
     font-size: .6rem;
     letter-spacing: 1px;
@@ -36,12 +54,35 @@
 
 .frontCardContainer {
     position: absolute;
-    // border-radius: 1px solid green;
+    // height: 20px;
+    width: 285px;
+    // background-color: red;
+    text-align: start;
+    top: 128px;
+
 }
 
 .bg-card-front {
     position: relative;
-    width: 76%;
-    transform: translate(-10%, -76%);
-    filter: drop-shadow(10px 100px 50px lightgrey) 
+    width: 285px;
+    left: 16px;
+
+    // transform: translate(-10%, -76%);
+    // filter: drop-shadow(0px 80px 30px rgb(226, 226, 226));
+
+    // box-shadow: 3px 80px 30px lightgrey;
+}
+
+.bg-card-front-shadow {
+    position: absolute;
+    width: 235px;
+    left: 37px;
+    // opacity: 0;
+    // display: none;
+
+    filter: drop-shadow(0px 80px 30px rgb(226, 226, 226));
+
+
+    // transform: translate(-10%, -76%);
+    // filter: drop-shadow(0px 80px 30px green);
 }

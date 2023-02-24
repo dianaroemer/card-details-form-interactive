@@ -67,6 +67,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 When positioning an element relative to its parent, if any transformX or Y is applied to the parent, ensure that the child elements use the same method of transform to ensure similar scaling and movement across responsive viewports. In the future, practice pinning elements to exact spots on their parent element using position absolute. 
 
+A CSS filter effect also applies its effect to any visible children.
+
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
