@@ -1,17 +1,62 @@
-import React, {useState} from 'react';
-// import '../styles/CardDetailsForm.scss';
+import React, {useState, useEffect} from 'react';
+import '../styles/CardDetailsForm.scss';
+
+import mobileBG from '../assets/bg-main-mobile.png';
+import desktopBG from '../assets/bg-main-desktop.png';
+
+import bgCardBack from '../assets/bg-card-back.png';
+import bgCardFront from '../assets/bg-card-front.png';
 
 function CardDetailsForm(props) {
+
+    const [viewportWidth, setViewportWidth] = useState(window.innerWidth)
+    window.onresize = handleWindowResize
+    function handleWindowResize() {
+    //   console.log(window.innerHeight, window.innerWidth);
+      setViewportWidth(window.innerWidth);
+    }
+
+    const [isMobileViewport, toggleMobileViewport] = useState((window.innerWidth > 425));
+    useEffect(() => {
+      if(viewportWidth > 425) {
+        toggleMobileViewport(false)
+      } else {
+        toggleMobileViewport(true)
+      }
+    }, [viewportWidth])
+
+
+    const [cvc, setCVC] = useState('000');
+
+
 
     return(
         <div className='cardDetailsForm'>
 
-            I am Card Details Form.
+            {/* I am Card Details Form. */}
 
-            I will house sub-components
+            {/* I will house sub-components */}
 
-            <div className='displayCardContainer'>
-                Aaaall of that goes here
+            <div className='cardDisplayContainer'>
+                
+                {isMobileViewport ? 
+                    <img src={mobileBG} alt="A black and purple decorative background" className='mobile-bg-image'/> :
+                    <img src={desktopBG} alt="A black and purple decorative background" className='desktop-bg-image'/> 
+                }
+
+                <div className='backwardCardContainer'>
+                    <img src={bgCardBack} alt='The back of a credit card' className='bg-card-back'/>
+                    <p className='cvcContent'>
+                        {cvc}
+                    </p>
+                </div>
+
+                <div className='frontCardContainer'>
+                <img src={bgCardFront} alt='The front of a credit card' className='bg-card-front'/>
+                </div>
+
+
+                {/* Aaaall of that goes here
                 Some kinda background image, woooohoo look at that
                 Backwards card Container
                     Backwards Card image   
@@ -21,7 +66,7 @@ function CardDetailsForm(props) {
                     CC Logo?
                     Credit Card Numbers
                     Credit Card name
-                    Credit Card Expiration Date``
+                    Credit Card Expiration Date */}
 
             </div>
 
