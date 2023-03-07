@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/card-details-form-interactive/static/css/main.ba6d6141.css",
-    "main.js": "/card-details-form-interactive/static/js/main.382e8c90.js",
+    "main.css": "/card-details-form-interactive/static/css/main.4af9a69c.css",
+    "main.js": "/card-details-form-interactive/static/js/main.20e3d464.js",
     "static/js/787.f26b7e63.chunk.js": "/card-details-form-interactive/static/js/787.f26b7e63.chunk.js",
     "static/media/bg-main-desktop.png": "/card-details-form-interactive/static/media/bg-main-desktop.806e7aa7b4dbc1d78bc3.png",
     "static/media/bg-card-back.png": "/card-details-form-interactive/static/media/bg-card-back.23f68fa3aa3d5b33dfc8.png",
@@ -9,12 +9,12 @@
     "static/media/bg-main-mobile.png": "/card-details-form-interactive/static/media/bg-main-mobile.caa4689407777a312ede.png",
     "index.html": "/card-details-form-interactive/index.html",
     "static/media/card-logo.svg": "/card-details-form-interactive/static/media/card-logo.8ca9036515954c3f8191559dce9c7bdf.svg",
-    "main.ba6d6141.css.map": "/card-details-form-interactive/static/css/main.ba6d6141.css.map",
-    "main.382e8c90.js.map": "/card-details-form-interactive/static/js/main.382e8c90.js.map",
+    "main.4af9a69c.css.map": "/card-details-form-interactive/static/css/main.4af9a69c.css.map",
+    "main.20e3d464.js.map": "/card-details-form-interactive/static/js/main.20e3d464.js.map",
     "787.f26b7e63.chunk.js.map": "/card-details-form-interactive/static/js/787.f26b7e63.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba6d6141.css",
-    "static/js/main.382e8c90.js"
+    "static/css/main.4af9a69c.css",
+    "static/js/main.20e3d464.js"
   ]
 }
