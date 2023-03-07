@@ -6,6 +6,7 @@ import desktopBG from '../assets/bg-main-desktop.png';
 
 import bgCardBack from '../assets/bg-card-back.png';
 import bgCardFront from '../assets/bg-card-front.png';
+import {ReactComponent as CardLogo} from '../assets/card-logo.svg';
 
 function CardDetailsForm(props) {
 
@@ -55,7 +56,35 @@ function CardDetailsForm(props) {
 
                     <img src={bgCardFront} alt='The drop shadow for the front of the credit card' className='bg-card-front-shadow'/>
                     <img src={bgCardFront} alt='The front of a credit card' className='bg-card-front'/>
-                    
+                    <CardLogo className='front-card-logo'/>
+
+                    <div className='cardNumberContainer'>
+                        {/* These Numbers will eventually become a state derived variable */}
+                        <p className='cardNumberDigits'>0000</p>
+                        <p className='cardNumberDigits'>0000</p>
+                        <p className='cardNumberDigits'>0000</p>
+                        <p className='cardNumberDigits'>0000</p>
+                    </div>
+
+                    <div className='cardHolderName'>
+                        Jane Appleseed
+                    </div>
+
+                    <div className='cardExpDateContainer'>
+                        <p className='cardExpDate'>
+                            00 
+                            {/* This number will eventually become a state derived variable */}
+                        </p>
+                        <p className='cardExpDate'>
+                            /
+                        </p>
+                        <p className='cardExpDate'>
+                            00
+                            {/* This number will eventually become a state derived variable */}
+                        </p>
+
+
+                    </div>
 
                 </div>
 
