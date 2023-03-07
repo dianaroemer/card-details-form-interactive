@@ -138,3 +138,18 @@
     font-size: 10px;
     letter-spacing: 1px;
 }
+
+
+
+
+.cardFormFieldset {
+    border: none;
+}
+
+// Found this code on stackoverflow on how to include an accessible legend for screenreaders while otherwise hiding it visually
+legend span {
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}

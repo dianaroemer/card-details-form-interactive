@@ -104,6 +104,20 @@ function CardDetailsForm(props) {
             </div>
 
             <div className='cardFormContainer'>
+                    <form>
+                        <fieldset className='cardFormFieldset'>
+                            <legend><span>Card Form</span></legend>
+                            {/* Found this span wrapper for legends on stackoverflow - see the CSS for explanation as to why this works */}
+
+                            <p>
+                                <label htmlFor='cardholderNameField'>Cardholder Name</label>
+                                <input type="number" id="formCardholderName" name="cardholderNameField" value={0} />
+
+                            </p>                            
+
+                        </fieldset>
+                    </form>
+
                 This is variable! It will either be
                 The input form or the completed form!
 
