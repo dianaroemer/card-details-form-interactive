@@ -1,10 +1,15 @@
+@use '../styles/_colors' as _colors;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+
 .cardDetailsForm {
     // width: 100%;
+    // font-family: 'Space-Grotesk', sans-serif;
 }
 
 .cardDisplayContainer {
     // width: 100%;
-    height: 500px;
+    height: 284px;
 }
 
 .mobile-bg-image {
@@ -140,10 +145,16 @@
 }
 
 
+.cardFormContainer {
+    // opacity: 1;
+    opacity: .99999; // This causes the z-index of the cardFormContainer to rise above the stacking context of the shadow created by the card's filter function
+    width: 100%;
+}
 
 
 .cardFormFieldset {
     border: none;
+    min-width: 0; // Overwriting Chrome's default min-width for fieldsets
 }
 
 // Found this code on stackoverflow on how to include an accessible legend for screenreaders while otherwise hiding it visually
@@ -152,4 +163,88 @@ legend span {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.cardFieldContainer {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+    
+}
+
+.cardFieldContainer label {
+    text-align: start;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding-bottom: 8px;
+}
+
+.cardFieldContainer input{
+    padding: 12px;
+    padding-top: 13px;
+    padding-bottom: 9px;
+    padding-left: 14px;
+    font-size: 17px;
+    border-radius: 8px;
+    border: solid 1px _colors.$LightGrayishViolet;
+    letter-spacing: 1px;
+}
+
+.cardFieldContainer input::placeholder {
+    color: _colors.$DarkGrayishViolet;
+    opacity: .6;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+
+
+input:invalid {
+    border: solid 1px _colors.$Red;
+}
+
+input:placeholder-shown {
+    // border: solid 1px _colors.$LightGrayishViolet;
+    // background-color: red;
+}
+
+input:required {
+    border: 1px solid _colors.$LightGrayishViolet;
+}
+
+
+
+.cardExpCVCContainer {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: fit-content;
+    width: auto;
+}
+
+#cardFieldExpMM {
+    width: 73px;
+    // overflow: clip;
+    padding-right: 0px;
+}
+
+#cardFieldExpYY {
+    width: 70px;
+}
+
+.cardExpCVCContainer .cardFieldContainer {
+    margin-top: 0px;
+}
+
+#cardFieldCVC {
+    width: 49%;
+    padding-left: 0px;
+    padding-right: 0px;
+    // margin-right: 10px
+}
+
+*:focus {
+    outline: none;
 }

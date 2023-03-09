@@ -109,16 +109,41 @@ function CardDetailsForm(props) {
                             <legend><span>Card Form</span></legend>
                             {/* Found this span wrapper for legends on stackoverflow - see the CSS for explanation as to why this works */}
 
-                            <p>
+                            <p className='cardFieldContainer'>
                                 <label htmlFor='cardholderNameField'>Cardholder Name</label>
-                                <input type="number" id="formCardholderName" name="cardholderNameField" value={0} />
+                                <input type="text" id="formCardholderName" name="cardholderNameField" value={''} placeholder={'e.g. Jane Appleseed'} required/>
 
-                            </p>                            
+                            </p> 
+
+                            <p className='cardFieldContainer'>
+                                <label htmlFor='cardholderNumberField'>Card Number</label>
+                                <input type="number" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} required/>
+                            </p>
+
+                            <div className='cardExpCVCContainer'>
+                                <p className='cardFieldContainer' id='cardFieldExpMM'>
+                                    <label htmlFor='cardExpFieldMM'>EXP. Date </label>
+                                    <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={''} placeholder={'MM'} required/>
+                                </p>
+
+                                <p className='cardFieldContainer' id='cardFieldExpYY'>
+                                    <label htmlFor='cardExpFieldYY'> (MM/YY) </label>
+                                    <input type="number" id="formCardExpYY" name="cardExpFieldYY" value={''} placeholder={'YY'} required/>
+                                </p>
+
+                                <p className='cardFieldContainer' id='cardFieldCVC'>
+                                    <label htmlFor='cardExpFieldCVC'> CVC </label>
+                                    <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={''} placeholder={'e.g. 123'} maxLength={3} required/>
+                                </p>
+
+
+
+                            </div>                        
 
                         </fieldset>
                     </form>
 
-                This is variable! It will either be
+                {/* This is variable! It will either be
                 The input form or the completed form!
 
                 Input form Container!
@@ -155,7 +180,7 @@ function CardDetailsForm(props) {
 
                     Details Added card details
 
-                    Continue button
+                    Continue button */}
 
 
             </div>
