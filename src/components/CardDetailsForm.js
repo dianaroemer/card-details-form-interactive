@@ -37,6 +37,13 @@ function CardDetailsForm(props) {
         toggleConfirmationPage(!confirmationPage);
     }
 
+    const [cardHolderName, updateCardHolderName] = useState('');
+
+    function changeCardHolderName(e){
+        e.preventDefault();
+        updateCardHolderName(e.target.value);
+    }
+
 
 
     return(
@@ -75,7 +82,7 @@ function CardDetailsForm(props) {
                     </div>
 
                     <div className='cardHolderName'>
-                        Jane Appleseed
+                        {cardHolderName ? cardHolderName : 'Jane Appleseed'}
                     </div>
 
                     <div className='cardExpDateContainer'>
@@ -137,7 +144,10 @@ function CardDetailsForm(props) {
 
                         <p className='cardFieldContainer'>
                             <label htmlFor='cardholderNameField'>Cardholder Name</label>
-                            <input type="text" id="formCardholderName" name="cardholderNameField" value={''} placeholder={'e.g. Jane Appleseed'} required/>
+                            <input type="text" id="formCardholderName" name="cardholderNameField" value={cardHolderName} placeholder={'e.g. Jane Appleseed'} onChange={(e)=> {
+                                    e.preventDefault();
+                                    changeCardHolderName(e);
+                            }} required/>
 
                         </p> 
 
