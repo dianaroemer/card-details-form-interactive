@@ -38,13 +38,28 @@ function CardDetailsForm(props) {
     }
 
     const [cardHolderName, updateCardHolderName] = useState('');
-
     function changeCardHolderName(e){
         e.preventDefault();
         updateCardHolderName(e.target.value);
     }
 
+    const [cardHolderNumber, updateCardHolderNumber] = useState('');
+    function changeCardHolderNumber(e) {
+        e.preventDefault();
+        updateCardHolderNumber(e.target.value.replace(' ', ''));
+        changeCardHolderNumberDisplay(cardHolderNumber);
+        
+        console.log(cardHolderNumber)
+    }
 
+    const [cardHolderNumberDisplay, updateCardHolderNumberDisplay] = useState('');
+    function changeCardHolderNumberDisplay(newNum){
+        let finString;
+        if(newNum.length > 3){
+            finString = newNum.slice(0,4) + ' ' + newNum.slice(4);
+        }
+        updateCardHolderNumberDisplay(finString);
+    }
 
     return(
         <div className='cardDetailsForm'>
@@ -145,7 +160,6 @@ function CardDetailsForm(props) {
                         <p className='cardFieldContainer'>
                             <label htmlFor='cardholderNameField'>Cardholder Name</label>
                             <input type="text" id="formCardholderName" name="cardholderNameField" value={cardHolderName} placeholder={'e.g. Jane Appleseed'} onChange={(e)=> {
-                                    e.preventDefault();
                                     changeCardHolderName(e);
                             }} required/>
 
@@ -153,23 +167,25 @@ function CardDetailsForm(props) {
 
                         <p className='cardFieldContainer'>
                             <label htmlFor='cardholderNumberField'>Card Number</label>
-                            <input type="number" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} required/>
+                            <input type="text" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
+                                    changeCardHolderNumber(e);
+                            }} value={cardHolderNumberDisplay} required/>
                         </p>
 
                         <div className='cardExpCVCContainer'>
                             <p className='cardFieldContainer' id='cardFieldExpMM'>
                                 <label htmlFor='cardExpFieldMM'>EXP. Date </label>
-                                <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={''} placeholder={'MM'} required/>
+                                <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={''} onChange={(e) => e.preventDefault()} placeholder={'MM'} required/>
                             </p>
 
                             <p className='cardFieldContainer' id='cardFieldExpYY'>
                                 <label htmlFor='cardExpFieldYY'> (MM/YY) </label>
-                                <input type="number" id="formCardExpYY" name="cardExpFieldYY" value={''} placeholder={'YY'} required/>
+                                <input type="number" id="formCardExpYY" name="cardExpFieldYY" value={''} onChange={(e) => e.preventDefault()} placeholder={'YY'} required/>
                             </p>
 
                             <p className='cardFieldContainer' id='cardFieldCVC'>
                                 <label htmlFor='cardExpFieldCVC'> CVC </label>
-                                <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={''} placeholder={'e.g. 123'} maxLength={3} required/>
+                                <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={''} onChange={(e) => e.preventDefault()} placeholder={'e.g. 123'} maxLength={3} required/>
                             </p>
 
 
