@@ -7,6 +7,7 @@ import desktopBG from '../assets/bg-main-desktop.png';
 import bgCardBack from '../assets/bg-card-back.png';
 import bgCardFront from '../assets/bg-card-front.png';
 import {ReactComponent as CardLogo} from '../assets/card-logo.svg';
+import {ReactComponent as ThankYouLogo} from '../assets/icon-complete.svg'
 
 function CardDetailsForm(props) {
 
@@ -103,11 +104,15 @@ function CardDetailsForm(props) {
 
             </div>
 
+            
+
+
+            {/*
             <div className='cardFormContainer'>
                     <form>
                         <fieldset className='cardFormFieldset'>
                             <legend><span>Card Form</span></legend>
-                            {/* Found this span wrapper for legends on stackoverflow - see the CSS for explanation as to why this works */}
+                            {// Found this span wrapper for legends on stackoverflow - see the CSS for explanation as to why this works }
 
                             <p className='cardFieldContainer'>
                                 <label htmlFor='cardholderNameField'>Cardholder Name</label>
@@ -186,11 +191,27 @@ function CardDetailsForm(props) {
 
                     Details Added card details
 
-                    Continue button */}
+                    Continue button 
 
+
+            </div> */}
+
+            <div className='thankYouContainer'>
+                <ThankYouLogo className='thankYouLogo'/>
+                <h2 className='thankYouHeader'>
+                    Thank You!
+                </h2>
+                <h3 className='thankYouContent'>
+                    We've added your card details
+                </h3>
+
+                <button type="submit" className='cardFormButton' id='thankYouButton' onClick={(e)=> {
+                                e.preventDefault();
+                            }}>
+                                Continue
+                            </button>
 
             </div>
-
 
         </div>
 

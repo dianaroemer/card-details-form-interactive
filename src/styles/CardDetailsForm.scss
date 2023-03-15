@@ -269,3 +269,34 @@ input:required {
 .cardFormButton::first-letter{
     font-size: 1.1rem;
 }
+
+.thankYouContainer {
+    border: solid 1px red;
+    padding-top: 46px;
+}
+
+.thankYouLogo {
+    opacity: .99;
+}
+
+.thankYouHeader {
+    text-transform: uppercase;
+    padding-top: 10px;
+    letter-spacing: 4px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.thankYouContent {
+    color: _colors.$DarkGrayishViolet;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 43px;
+
+}
+
+#thankYouButton {
+    margin-left: 23px;
+    margin-right: 23px;
+}
