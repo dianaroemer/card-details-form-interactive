@@ -61,6 +61,24 @@ function CardDetailsForm(props) {
         updateCardHolderNumberDisplay(finString);
     }
 
+    const [cardHolderExpMM, updateCardHolderExpMM] = useState('');
+    function changeCardHolderExpMM(e){
+        e.preventDefault()
+        updateCardHolderExpMM(e.target.value.slice(0, 2));
+    }
+
+    const [cardHolderExpYY, updateCardHolderExpYY] = useState('');
+    function changeCardHolderExpYY(e){
+        e.preventDefault()
+        updateCardHolderExpYY(e.target.value.slice(0,2));
+    }
+
+    const [cardHolderCVC, updateCardHolderCVC] = useState('');
+    function changeCardHolderCVC(e){
+        e.preventDefault()
+        updateCardHolderCVC(e.target.value.slice(0, 3));
+    }
+
     return(
         <div className='cardDetailsForm'>
 
@@ -78,7 +96,7 @@ function CardDetailsForm(props) {
                 <div className='backwardCardContainer'>
                     <img src={bgCardBack} alt='The back of a credit card' className='bg-card-back'/>
                     <p className='cvcContent'>
-                        {cvc}
+                        {cardHolderCVC ? cardHolderCVC : '000'}
                     </p>
                 </div>
 
@@ -102,14 +120,14 @@ function CardDetailsForm(props) {
 
                     <div className='cardExpDateContainer'>
                         <p className='cardExpDate'>
-                            00 
+                            {cardHolderExpMM ? cardHolderExpMM : '00'} 
                             {/* This number will eventually become a state derived variable */}
                         </p>
                         <p className='cardExpDate'>
                             /
                         </p>
                         <p className='cardExpDate'>
-                            00
+                        {cardHolderExpYY ? cardHolderExpYY : '00'} 
                             {/* This number will eventually become a state derived variable */}
                         </p>
 
@@ -175,17 +193,17 @@ function CardDetailsForm(props) {
                         <div className='cardExpCVCContainer'>
                             <p className='cardFieldContainer' id='cardFieldExpMM'>
                                 <label htmlFor='cardExpFieldMM'>EXP. Date </label>
-                                <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={''} onChange={(e) => e.preventDefault()} placeholder={'MM'} required/>
+                                <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={cardHolderExpMM} onChange={(e) => changeCardHolderExpMM(e)} placeholder={'MM'} maxLength="2" required/>
                             </p>
 
                             <p className='cardFieldContainer' id='cardFieldExpYY'>
                                 <label htmlFor='cardExpFieldYY'> (MM/YY) </label>
-                                <input type="number" id="formCardExpYY" name="cardExpFieldYY" value={''} onChange={(e) => e.preventDefault()} placeholder={'YY'} required/>
+                                <input type="number" id="formCardExpYY" name="cardExpFieldYY" value={cardHolderExpYY} onChange={(e) => changeCardHolderExpYY(e)} maxLength="2" placeholder={'YY'} required/>
                             </p>
 
                             <p className='cardFieldContainer' id='cardFieldCVC'>
                                 <label htmlFor='cardExpFieldCVC'> CVC </label>
-                                <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={''} onChange={(e) => e.preventDefault()} placeholder={'e.g. 123'} maxLength={3} required/>
+                                <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={cardHolderCVC} onChange={(e) => changeCardHolderCVC(e)} placeholder={'e.g. 123'} maxLength="3" required/>
                             </p>
 
 
