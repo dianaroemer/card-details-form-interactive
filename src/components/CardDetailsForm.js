@@ -138,7 +138,13 @@ function CardDetailsForm(props) {
 
 
 
-                            </div>                        
+                            </div>               
+
+                            <button type="submit" className='cardFormButton' onClick={(e)=> {
+                                e.preventDefault();
+                            }}>
+                                Confirm
+                            </button>
 
                         </fieldset>
                     </form>

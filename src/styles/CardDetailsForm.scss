@@ -248,3 +248,24 @@ input:required {
 *:focus {
     outline: none;
 }
+
+.cardFormButton {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 5px;
+
+    width: stretch;
+    height: 53px;
+
+    color: white;
+    background-color: _colors.$VeryDarkViolet;
+    border: none;
+    border-radius: 8px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+}
+
+.cardFormButton::first-letter{
+    font-size: 1.1rem;
+}
