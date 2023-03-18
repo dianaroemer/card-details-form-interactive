@@ -190,20 +190,29 @@ function CardDetailsForm(props) {
                         </p>
 
                         <div className='cardExpCVCContainer'>
-                            <p className='cardFieldContainer' id='cardFieldExpMM'>
+                            <div className='cardFieldContainer' id='cardFieldExpMM'>
                                 <label htmlFor='cardExpFieldMM'>EXP. Date </label>
                                 <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={cardHolderExpMM} onChange={(e) => changeCardHolderExpMM(e)} placeholder={'MM'} maxLength="2" required/>
-                            </p>
+                                <p className='blankFieldError'>
+                                    Can't Be Blank
+                                </p>
+                            </div>
 
-                            <p className='cardFieldContainer' id='cardFieldExpYY'>
+                            <div className='cardFieldContainer' id='cardFieldExpYY'>
                                 <label htmlFor='cardExpFieldYY'> (MM/YY) </label>
                                 <input type="number" id="formCardExpYY" name="cardExpFieldYY" value={cardHolderExpYY} onChange={(e) => changeCardHolderExpYY(e)} maxLength="2" placeholder={'YY'} required/>
-                            </p>
+                                <p className='blankFieldError'>
+                                    Can't Be Blank
+                                </p>
+                            </div>
 
-                            <p className='cardFieldContainer' id='cardFieldCVC'>
+                            <div className='cardFieldContainer' id='cardFieldCVC'>
                                 <label htmlFor='cardExpFieldCVC'> CVC </label>
                                 <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={cardHolderCVC} onChange={(e) => changeCardHolderCVC(e)} placeholder={'e.g. 123'} maxLength="3" required/>
-                            </p>
+                                <p className='blankFieldError'>
+                                    Can't Be Blank
+                                </p>
+                            </div>
 
 
 
