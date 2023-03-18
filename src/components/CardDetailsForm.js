@@ -51,8 +51,11 @@ function CardDetailsForm(props) {
     const [cardHolderNumberDisplay, updateCardHolderNumberDisplay] = useState('');
     function cc_format(ccnum) {
         let v = ccnum.replace(/\s+/g, '').replace(/[^0-9]/g, '')
+        console.log('v', v)
         let matches = v.match(/\d{4,16}/g);
-        let match = matches && matches[0] || ''
+        console.log('matches', matches);
+        let match = matches && matches[0] || '';
+        console.log('match', match);
         let parts = [];
         for( let i=0, len=match.length; i<len; i+=4) {
             parts.push(match.substring(i, i+4))
@@ -60,9 +63,11 @@ function CardDetailsForm(props) {
         if (parts.length) {
             console.log(parts.join(' '))
             // return parts.join(' ');
+            updateCardHolderNumber(parts.join(''));
             updateCardHolderNumberDisplay(parts.join(' '))
         } else {
             console.log(v);
+            updateCardHolderNumber(v)
             updateCardHolderNumberDisplay(v)
             // return ccnum;
         }
@@ -186,7 +191,7 @@ function CardDetailsForm(props) {
                             <input type="text" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
                                     e.preventDefault();
                                     cc_format(e.target.value);
-                            }} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}' required/>
+                            }} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}/g' required/>
                         </p>
 
                         <div className='cardExpCVCContainer'>
