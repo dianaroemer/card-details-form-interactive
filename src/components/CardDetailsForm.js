@@ -50,7 +50,7 @@ function CardDetailsForm(props) {
 
     const [cardHolderNumberDisplay, updateCardHolderNumberDisplay] = useState('');
     function cc_format(ccnum) {
-        var v = ccnum.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+        let v = ccnum.replace(/\s+/g, '').replace(/[^0-9]/g, '')
         let matches = v.match(/\d{4,16}/g);
         let match = matches && matches[0] || ''
         let parts = [];
@@ -62,8 +62,8 @@ function CardDetailsForm(props) {
             // return parts.join(' ');
             updateCardHolderNumberDisplay(parts.join(' '))
         } else {
-            console.log(ccnum);
-            updateCardHolderNumberDisplay(ccnum)
+            console.log(v);
+            updateCardHolderNumberDisplay(v)
             // return ccnum;
         }
     }
@@ -186,7 +186,7 @@ function CardDetailsForm(props) {
                             <input type="text" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
                                     e.preventDefault();
                                     cc_format(e.target.value);
-                            }} value={cardHolderNumberDisplay} pattern='/([0-9]+){16}\w+/g' required/>
+                            }} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}' required/>
                         </p>
 
                         <div className='cardExpCVCContainer'>
