@@ -28,8 +28,6 @@ function CardDetailsForm(props) {
     }, [viewportWidth])
 
 
-    const [cvc, setCVC] = useState('000');
-
     const [confirmationPage, toggleConfirmationPage] = useState(false);
 
     function clickConfirm(e){
@@ -46,20 +44,31 @@ function CardDetailsForm(props) {
     const [cardHolderNumber, updateCardHolderNumber] = useState('');
     function changeCardHolderNumber(e) {
         e.preventDefault();
-        updateCardHolderNumber(e.target.value.replace(' ', ''));
-        changeCardHolderNumberDisplay(cardHolderNumber);
-        
+        // updateCardHolderNumber(e.target.value.replace(' ', ''));
         console.log(cardHolderNumber)
     }
 
     const [cardHolderNumberDisplay, updateCardHolderNumberDisplay] = useState('');
-    function changeCardHolderNumberDisplay(newNum){
-        let finString;
-        if(newNum.length > 3){
-            finString = newNum.slice(0,4) + ' ' + newNum.slice(4);
+    function cc_format(ccnum) {
+        var v = ccnum.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+        let matches = v.match(/\d{4,16}/g);
+        let match = matches && matches[0] || ''
+        let parts = [];
+        for( let i=0, len=match.length; i<len; i+=4) {
+            parts.push(match.substring(i, i+4))
         }
-        updateCardHolderNumberDisplay(finString);
+        if (parts.length) {
+            console.log(parts.join(' '))
+            // return parts.join(' ');
+            updateCardHolderNumberDisplay(parts.join(' '))
+        } else {
+            console.log(ccnum);
+            updateCardHolderNumberDisplay(ccnum)
+            // return ccnum;
+        }
     }
+
+
 
     const [cardHolderExpMM, updateCardHolderExpMM] = useState('');
     function changeCardHolderExpMM(e){
@@ -78,6 +87,7 @@ function CardDetailsForm(props) {
         e.preventDefault()
         updateCardHolderCVC(e.target.value.slice(0, 3));
     }
+
 
     return(
         <div className='cardDetailsForm'>
@@ -108,10 +118,7 @@ function CardDetailsForm(props) {
 
                     <div className='cardNumberContainer'>
                         {/* These Numbers will eventually become a state derived variable */}
-                        <p className='cardNumberDigits'>0000</p>
-                        <p className='cardNumberDigits'>0000</p>
-                        <p className='cardNumberDigits'>0000</p>
-                        <p className='cardNumberDigits'>0000</p>
+                        <p className='cardNumberDigits'>{cardHolderNumberDisplay ? cardHolderNumberDisplay : '0000 0000 0000 0000'}</p>
                     </div>
 
                     <div className='cardHolderName'>
@@ -136,18 +143,6 @@ function CardDetailsForm(props) {
 
                 </div>
 
-
-                {/* Aaaall of that goes here
-                Some kinda background image, woooohoo look at that
-                Backwards card Container
-                    Backwards Card image   
-                    CVC text
-                Front facing card container
-                    Front facing CC image  
-                    CC Logo?
-                    Credit Card Numbers
-                    Credit Card name
-                    Credit Card Expiration Date */}
 
             </div>
 
@@ -175,19 +170,23 @@ function CardDetailsForm(props) {
                         <legend><span>Card Form</span></legend>
                         {/* Found this span wrapper for legends on stackoverflow - see the CSS for explanation as to why this works } */}
 
-                        <p className='cardFieldContainer'>
+                        <div className='cardFieldContainer'>
                             <label htmlFor='cardholderNameField'>Cardholder Name</label>
                             <input type="text" id="formCardholderName" name="cardholderNameField" value={cardHolderName} placeholder={'e.g. Jane Appleseed'} onChange={(e)=> {
                                     changeCardHolderName(e);
                             }} required/>
+                            <p className='blankFieldError'>
+                                Can't Be Blank
+                            </p>
 
-                        </p> 
+                        </div> 
 
                         <p className='cardFieldContainer'>
                             <label htmlFor='cardholderNumberField'>Card Number</label>
                             <input type="text" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
-                                    changeCardHolderNumber(e);
-                            }} value={cardHolderNumberDisplay} required/>
+                                    e.preventDefault();
+                                    cc_format(e.target.value);
+                            }} value={cardHolderNumberDisplay} pattern='/([0-9]+){16}\w+/g' required/>
                         </p>
 
                         <div className='cardExpCVCContainer'>
@@ -219,52 +218,10 @@ function CardDetailsForm(props) {
                     </fieldset>
                 </form>
 
-            {/* This is variable! It will either be
-            The input form or the completed form!
-
-            Input form Container!
-
-                Label name
-                input field name
-                ERROR INPUTFIELD NAME WRONG
-
-                label card number
-                input field card number
-                ERROR INPUTFIELD CARD NUMBER WRONG
-
-                Container for (month/year) & (CVC)
-                    Expiration Date Label
-                    Container for Month Input and Year Input
-                        Container for Month Input and Error
-                            Month Input
-                            ERROR INPUTFIELD MONTH
-                        Container for Year Input and Error
-                            Year Input
-                            ERROR INPUTFIELD Year
-                    Container for CVC 
-                        Label for CVC
-                        input field CVC
-                        ERROR INPUTFIELD CVC
-
-                Confirm Button
-
-            Form Received Container!
-
-                Logo SVG Checkmark
-
-                Header THANK YOU!
-
-                Details Added card details
-
-                    Continue button */}
-
+        
 
                 </div> 
             }
-
-            
-
-
             
 
         </div>
