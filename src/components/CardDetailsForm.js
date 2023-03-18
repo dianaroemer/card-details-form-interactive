@@ -191,7 +191,7 @@ function CardDetailsForm(props) {
                             <input type="text" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
                                     e.preventDefault();
                                     cc_format(e.target.value);
-                            }} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}/g' required/>
+                            }} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}' required/>
                         </p>
 
                         <div className='cardExpCVCContainer'>
