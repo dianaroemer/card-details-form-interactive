@@ -323,3 +323,62 @@ input:required {
     margin-right: 23px;
 }
 
+
+@media screen and (min-width: 425px) {
+    .cardDetailsForm{
+        text-align: start;
+        display: flex;
+        // flex-direction: row;
+    }
+
+    .cardDisplayContainer {
+        width: 50%;
+    }
+
+    .desktop-bg-image {
+        height: 100vh;
+        width: 67%;
+    }
+
+    .backwardCardContainer {
+        left: 258px;
+        top: 455px;
+        text-align: start;
+        width: auto;
+    }
+
+    .bg-card-back-shadow {
+        position: absolute;
+        width: 235px;
+        top: 20px;
+        left: 200px;
+        // opacity: 0;
+        // display: none;
+    
+        filter: drop-shadow(40px 140px 35px rgb(226, 226, 226));
+    }
+
+    .bg-card-back {
+        width: 450px;
+    }
+
+    .cvcContent {
+        // color: green;
+        top: 110px;
+        // right: 100px;
+        left: 358px;
+        font-size: .8rem;
+    }
+
+    .frontCardContainer {
+        
+    }
+
+    .bg-card-front {
+        width: 450px;
+    }
+
+    .cardFormContainer {
+        width: 50%;
+    }
+}

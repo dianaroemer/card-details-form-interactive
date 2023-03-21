@@ -41,6 +41,7 @@ function CardDetailsForm(props) {
         updateCardHolderName(e.target.value);
     }
 
+    // This state would parse out just cardHolderNumber whenever cardHolderNumberDisplay updates, allowing an easy translation of the user presented cardHolderNumber with spaces for readability and without spaces for use in the application.
     const [cardHolderNumber, updateCardHolderNumber] = useState('');
     function changeCardHolderNumber(e) {
         e.preventDefault();
@@ -72,8 +73,6 @@ function CardDetailsForm(props) {
             // return ccnum;
         }
     }
-
-
 
     const [cardHolderExpMM, updateCardHolderExpMM] = useState('');
     function changeCardHolderExpMM(e){
@@ -109,6 +108,8 @@ function CardDetailsForm(props) {
                 }
 
                 <div className='backwardCardContainer'>
+                    {!isMobileViewport && 
+                        <img src={bgCardFront} alt='The drop shadow for the front of the credit card' className='bg-card-back-shadow'/>}
                     <img src={bgCardBack} alt='The back of a credit card' className='bg-card-back'/>
                     <p className='cvcContent'>
                         {cardHolderCVC ? cardHolderCVC : '000'}

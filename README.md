@@ -72,7 +72,7 @@ When positioning an element relative to its parent, if any transformX or Y is ap
 A CSS filter effect also applies its effect to any visible children.
 
 Form error management in React can be simultaneously powerful and complicated. Using HTML's innate form management with CSS pseudo-class selectors gives a fairly straightforward method of generating intelligent forms, however React's internal state management can give much more finely grained control of how to build intelligent forms. For example, using a CSS sibling selector in an error field with its native styling set to `display:none;`, it can be easy to toggle the `display:box;` whenever the form generates an error according to a regex or empty criteria. That said, using a regex pattern or built-in HTML pseudo-states can be somewhat limiting in how and when I show the user errors. For example, I don't want to show any errors to the user unless they deliberately a validation criteria, or unless they try to submit an invalid form, in which case, I want to highlight all of the failed validation patterns for the user to fix. With React's built in state management, that should be fairly straightforward if I establish the HTML form with state management and validation in mind. 
-  With this application, I didn't use a React based validation system, and instead am relying on primitive regex pattern validation. In the future, I would like to manage validation with React's state, and only show appropriate errors to the user when they're called for. 
+  With this application, I didn't use a React based validation system, and instead am relying on primitive regex pattern validation. In the future, I would like to manage validation with React's state, and only show appropriate errors to the user when they're called for. For example, using state to track if a field is empty, whether the field is invalid, whether the user has tried to submit the form and return the appropriate errors back relative to the forms that fail validation (for example, the difference between showing the user "This field can't be empty!" and "This field is invalid!")
 
 
 
@@ -107,8 +107,8 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+ - [MDN How to structure a web form](https://developer.mozilla.org/en-US/docs/Learn/Forms/How_to_structure_a_web_form) - Gave me the appropriate semantic HTML for structuring and building an accessible web form.
+ - [Credit Card Formatter Function](https://www.peterbe.com/plog/cc-formatter) - The function described on this website gave me a baseline to give the user an easier field to read than 16 numbers consecutively, by adding spaces every fourth number. I modified it slightly to prevent any inputs of a character that isn't a digit.
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
