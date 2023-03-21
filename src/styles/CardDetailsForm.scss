@@ -155,7 +155,7 @@
 .cardFormFieldset {
     border: none;
     min-width: 0; // Overwriting Chrome's default min-width for fieldsets
-    margin-top: 16px;
+    // margin-top: 6px;
 }
 
 // Found this code on stackoverflow on how to include an accessible legend for screenreaders while otherwise hiding it visually
@@ -169,6 +169,7 @@ legend span {
 .cardFieldContainer {
     display: flex;
     flex-direction: column;
+    padding-top: 18px;
     padding-left: 8px;
     padding-right: 10px;
     padding-bottom: 4px;

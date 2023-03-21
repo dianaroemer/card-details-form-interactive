@@ -186,13 +186,16 @@ function CardDetailsForm(props) {
 
                         </div> 
 
-                        <p className='cardFieldContainer'>
+                        <div className='cardFieldContainer'>
                             <label htmlFor='cardholderNumberField'>Card Number</label>
                             <input type="text" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
                                     e.preventDefault();
                                     cc_format(e.target.value);
                             }} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}' required/>
-                        </p>
+                                <p className='blankFieldError'>
+                                    Can't Be Blank
+                                </p>
+                        </div>
 
                         <div className='cardExpCVCContainer'>
                             <div className='cardFieldContainer' id='cardFieldExpMM'>

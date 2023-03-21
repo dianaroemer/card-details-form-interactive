@@ -71,6 +71,11 @@ When positioning an element relative to its parent, if any transformX or Y is ap
 
 A CSS filter effect also applies its effect to any visible children.
 
+Form error management in React can be simultaneously powerful and complicated. Using HTML's innate form management with CSS pseudo-class selectors gives a fairly straightforward method of generating intelligent forms, however React's internal state management can give much more finely grained control of how to build intelligent forms. For example, using a CSS sibling selector in an error field with its native styling set to `display:none;`, it can be easy to toggle the `display:box;` whenever the form generates an error according to a regex or empty criteria. That said, using a regex pattern or built-in HTML pseudo-states can be somewhat limiting in how and when I show the user errors. For example, I don't want to show any errors to the user unless they deliberately a validation criteria, or unless they try to submit an invalid form, in which case, I want to highlight all of the failed validation patterns for the user to fix. With React's built in state management, that should be fairly straightforward if I establish the HTML form with state management and validation in mind. 
+  With this application, I didn't use a React based validation system, and instead am relying on primitive regex pattern validation. In the future, I would like to manage validation with React's state, and only show appropriate errors to the user when they're called for. 
+
+
+
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
