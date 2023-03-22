@@ -9,7 +9,7 @@
 
 .cardDisplayContainer {
     // width: 100%;
-    height: 284px;
+    // height: 284px;
 }
 
 .mobile-bg-image {
@@ -21,6 +21,8 @@
 
 .desktop-bg-image {
     width: 50%;
+    // min-height: 100vh;
+    // height: 100vh;
 }
 
 .backwardCardContainer {
@@ -333,6 +335,7 @@ input:required {
 
     .cardDisplayContainer {
         width: 50%;
+        height: 250px;
     }
 
     .desktop-bg-image {
@@ -341,7 +344,8 @@ input:required {
     }
 
     .backwardCardContainer {
-        left: 258px;
+        // left: 258px;
+        left: 18%;
         top: 455px;
         text-align: start;
         width: auto;
@@ -368,7 +372,8 @@ input:required {
     }
 
     .frontCardContainer {
-        left: 165px;
+        // left: 165px;
+        left: 11.5%;
         top: 185px;
         width: 450px;
     }
@@ -453,7 +458,37 @@ input:required {
 
     .cardFormFieldset {
         width: 55.5%;
-        padding-top: 235px;
-        padding-left: 100px;
+        padding-top: 31.5%;
+        // padding-left: 100px;
+        padding-left: 14%;
     }
+
+    .cardFieldContainer {
+        padding-top: 24px;
+    }
+
+    #cardFieldExpMM, #cardFieldExpYY {
+        width: 80px;
+    }
+
+    #cardFieldExpYY label {
+        // text-align: center;
+    }
+
+    .cardExpCVCContainer {
+        width: 100%;
+    }
+
+
+
+    #cardFieldCVC {
+        margin-left: 10px;
+    }
+
+
+    .cardFormButton {
+        margin-top: 17px;
+    }
+
+
 }
