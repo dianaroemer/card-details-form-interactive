@@ -236,6 +236,7 @@ input:placeholder-shown:focus {
 }
 
 // Currently, the transition applied to display doesn't work. I don't quite know how to get .blankFieldError to toggle visibility AND take no space in the document flow when not visibile
+// Update - I figured it out. That said, .blankFieldError will still appear in the document model for Accessibility, and should, according to true accessibility, not do that. Could be a pain for screen readers. The only thing I can think of is establishing a multi-state transition, eg. the form throws invalid, state transitions from display:none to display: block w/ opacity: 0, and then transitions again to .blankFieldErrorTransitioned to show opacity: 1 over a transition duration - three state transition.
 input:placeholder-shown:focus ~ p {
     // display: block;
     position: inherit;
