@@ -88,7 +88,7 @@ function CardDetailsForm(props) {
         let numMM = Number(newMM); // Convert string to number
         // console.log('numMM: ', numMM, typeof(numMM));
         // Only accept empty field and numbers between 1-12
-        if(numMM >= 0 && numMM < 13 || newMM === '') { 
+        if(numMM >= 0 && numMM < 13 || newMM === '' ) { 
             updateCardHolderExpMM(newMM);
         }
     }

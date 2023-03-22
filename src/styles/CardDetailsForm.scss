@@ -208,6 +208,7 @@ legend span {
 
 input:invalid {
     border: solid 1px _colors.$Red;
+    transition: all .20s ease-in;
 }
 
 input:placeholder-shown {
@@ -217,20 +218,31 @@ input:placeholder-shown {
 
 input:placeholder-shown:focus {
     border: solid 1px _colors.$Red;
+    transition: all .20s ease-in;
 }
 
 .blankFieldError {
-    display: none;
+    // display: none;
+    visibility: hidden;
+    position: absolute;
+    // overflow: auto;
+    opacity: 0;
+    color: _colors.$Red;
+    font-size: 12px;
+    text-align: start;
     margin-top: 8px;
     margin-bottom: 8px;
     width: 120px;
 }
 
+// Currently, the transition applied to display doesn't work. I don't quite know how to get .blankFieldError to toggle visibility AND take no space in the document flow when not visibile
 input:placeholder-shown:focus ~ p {
-    display: block;
-    font-size: 12px;
-    color: _colors.$Red;
-    text-align: start;
+    // display: block;
+    position: inherit;
+    visibility: visible;
+    // overflow: visible;
+    opacity: 1;    
+    transition: opacity .20s ease-in;
 }
 
 input:required {
@@ -324,6 +336,12 @@ input:required {
     margin-left: 23px;
     margin-right: 23px;
 }
+
+
+
+
+
+
 
 
 @media screen and (min-width: 425px) {
