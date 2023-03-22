@@ -32,6 +32,16 @@ function CardDetailsForm(props) {
 
     function clickConfirm(e){
         e.preventDefault();
+
+        // Perform validation check to decide if page is correct - if no validation errors, go to confirmation page, else show errors
+        console.log(`Performing state check`);
+        console.log(`Cardholder Name: `, cardHolderName);
+        console.log(`Card Number: `, cardHolderNumber);
+        console.log(`Card EXP MM: `, cardHolderExpMM);
+        console.log(`Card EXP YY: `, cardHolderExpYY);
+        console.log(`Card CVC: `, cardHolderCVC);
+
+
         toggleConfirmationPage(!confirmationPage);
     }
 
@@ -41,33 +51,28 @@ function CardDetailsForm(props) {
         updateCardHolderName(e.target.value);
     }
 
-    // This state would parse out just cardHolderNumber whenever cardHolderNumberDisplay updates, allowing an easy translation of the user presented cardHolderNumber with spaces for readability and without spaces for use in the application.
+    // This state is a parsed out version of CardHolderNumberDisplay without the spaces. 
     const [cardHolderNumber, updateCardHolderNumber] = useState('');
-    function changeCardHolderNumber(e) {
-        e.preventDefault();
-        // updateCardHolderNumber(e.target.value.replace(' ', ''));
-        console.log(cardHolderNumber)
-    }
-
+    // This state is the cardHolderNumber that is displayed to the user in graphic and the form, with spaces integrated for easier readability
     const [cardHolderNumberDisplay, updateCardHolderNumberDisplay] = useState('');
     function cc_format(ccnum) {
         let v = ccnum.replace(/\s+/g, '').replace(/[^0-9]/g, '')
-        console.log('v', v)
+        // console.log('v', v)
         let matches = v.match(/\d{4,16}/g);
-        console.log('matches', matches);
+        // console.log('matches', matches);
         let match = matches && matches[0] || '';
-        console.log('match', match);
+        // console.log('match', match);
         let parts = [];
         for( let i=0, len=match.length; i<len; i+=4) {
             parts.push(match.substring(i, i+4))
         }
         if (parts.length) {
-            console.log(parts.join(' '))
+            // console.log(parts.join(' '))
             // return parts.join(' ');
             updateCardHolderNumber(parts.join(''));
             updateCardHolderNumberDisplay(parts.join(' '))
         } else {
-            console.log(v);
+            // console.log(v);
             updateCardHolderNumber(v)
             updateCardHolderNumberDisplay(v)
             // return ccnum;
@@ -76,14 +81,30 @@ function CardDetailsForm(props) {
 
     const [cardHolderExpMM, updateCardHolderExpMM] = useState('');
     function changeCardHolderExpMM(e){
-        e.preventDefault()
-        updateCardHolderExpMM(e.target.value.slice(0, 2));
+        e.preventDefault();
+
+        // Validation check on ExpMM
+        let newMM = e.target.value.slice(0,2); // Only accept 2 digits
+        let numMM = Number(newMM); // Convert string to number
+        // console.log('numMM: ', numMM, typeof(numMM));
+        // Only accept empty field and numbers between 1-12
+        if(numMM >= 0 && numMM < 13 || newMM === '') { 
+            updateCardHolderExpMM(newMM);
+        }
     }
 
     const [cardHolderExpYY, updateCardHolderExpYY] = useState('');
     function changeCardHolderExpYY(e){
         e.preventDefault()
-        updateCardHolderExpYY(e.target.value.slice(0,2));
+
+        // Validation check on ExpYY
+        let newYY = e.target.value.slice(0,2); // Only accept 2 digits
+        let numYY = Number(newYY); // Convert string to number
+        // Only accept empty field and numbers above 22
+        if((newYY.length == 1) || (numYY > 22) || newYY === '') { 
+            updateCardHolderExpYY(newYY);
+        }
+        // updateCardHolderExpYY(e.target.value.slice(0,2));
     }
 
     const [cardHolderCVC, updateCardHolderCVC] = useState('');
@@ -201,7 +222,9 @@ function CardDetailsForm(props) {
                         <div className='cardExpCVCContainer'>
                             <div className='cardFieldContainer' id='cardFieldExpMM'>
                                 <label htmlFor='cardExpFieldMM'>EXP. Date </label>
-                                <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={cardHolderExpMM} onChange={(e) => changeCardHolderExpMM(e)} placeholder={'MM'} maxLength="2" required/>
+                                <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={cardHolderExpMM} onChange={(e) => 
+                                        changeCardHolderExpMM(e)} onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
+                                         placeholder={'MM'} maxLength="2" required/>
                                 <p className='blankFieldError'>
                                     Can't Be Blank
                                 </p>
