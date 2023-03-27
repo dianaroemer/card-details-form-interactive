@@ -88,7 +88,7 @@ function CardDetailsForm(props) {
         let numMM = Number(newMM); // Convert string to number
         // console.log('numMM: ', numMM, typeof(numMM));
         // Only accept empty field and numbers between 1-12
-        if(numMM >= 0 && numMM < 13 || newMM === '' ) { 
+        if((numMM >= 0 && numMM < 13 || newMM === '') && newMM !== '00' ) { 
             updateCardHolderExpMM(newMM);
         }
     }
@@ -101,7 +101,7 @@ function CardDetailsForm(props) {
         let newYY = e.target.value.slice(0,2); // Only accept 2 digits
         let numYY = Number(newYY); // Convert string to number
         // Only accept empty field and numbers above 22
-        if((newYY.length == 1) || (numYY > 22) || newYY === '') { 
+        if((newYY.length >= 1) || newYY === '') { 
             updateCardHolderExpYY(newYY);
         }
         // updateCardHolderExpYY(e.target.value.slice(0,2));
@@ -144,7 +144,6 @@ function CardDetailsForm(props) {
                     <CardLogo className='front-card-logo'/>
 
                     <div className='cardNumberContainer'>
-                        {/* These Numbers will eventually become a state derived variable */}
                         <p className='cardNumberDigits'>{cardHolderNumberDisplay ? cardHolderNumberDisplay : '0000 0000 0000 0000'}</p>
                     </div>
 
@@ -155,14 +154,12 @@ function CardDetailsForm(props) {
                     <div className='cardExpDateContainer'>
                         <p className='cardExpDate'>
                             {cardHolderExpMM ? cardHolderExpMM : '00'} 
-                            {/* This number will eventually become a state derived variable */}
                         </p>
                         <p className='cardExpDate'>
                             /
                         </p>
                         <p className='cardExpDate'>
-                        {cardHolderExpYY ? cardHolderExpYY : '00'} 
-                            {/* This number will eventually become a state derived variable */}
+                            {cardHolderExpYY ? cardHolderExpYY : '00'} 
                         </p>
 
 
@@ -240,7 +237,7 @@ function CardDetailsForm(props) {
 
                             <div className='cardFieldContainer' id='cardFieldCVC'>
                                 <label htmlFor='cardExpFieldCVC'> CVC </label>
-                                <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={cardHolderCVC} onChange={(e) => changeCardHolderCVC(e)} placeholder={'e.g. 123'} maxLength="3" required/>
+                                <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={cardHolderCVC} onChange={(e) => changeCardHolderCVC(e)} onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} placeholder={'e.g. 123'} maxLength="3" required/>
                                 <p className='blankFieldError'>
                                     Can't Be Blank
                                 </p>
