@@ -221,6 +221,10 @@ input:placeholder-shown:focus {
     transition: all .20s ease-in;
 }
 
+#formCardHolderNameInvalid {
+    border: solid 1px _colors.$Red;   
+}
+
 .blankFieldError {
     // display: none;
     visibility: hidden;
@@ -260,6 +264,17 @@ input:required {
     margin-bottom: 8px;
     width: 120px;
 }
+
+.emptyFieldError {
+    position: inherit;
+    color: _colors.$Red;
+    font-size: 12px;
+    text-align: start;
+    margin-top: 8xp;
+    margin-bottom: 8px;
+    width: 120px;
+}
+
 
 
 

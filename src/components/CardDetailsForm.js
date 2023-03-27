@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, isValidElement} from 'react';
 import '../styles/CardDetailsForm.scss';
 
 import mobileBG from '../assets/bg-main-mobile.png';
@@ -29,28 +29,50 @@ function CardDetailsForm(props) {
 
 
     const [confirmationPage, toggleConfirmationPage] = useState(false);
-
     function clickConfirm(e){
         e.preventDefault();
 
+        
+
         // Perform validation check to decide if page is correct - if no validation errors, go to confirmation page, else show errors
+        let isFormValid = true;
         console.log(`Performing state check`);
+        console.log(`Initial isFormValid`, isFormValid);
         console.log(`Cardholder Name: `, cardHolderName);
         console.log(`Card Number: `, cardHolderNumber);
         console.log(`Card EXP MM: `, cardHolderExpMM);
         console.log(`Card EXP YY: `, cardHolderExpYY);
         console.log(`Card CVC: `, cardHolderCVC);
 
-        
+        // Instead of doing many nested if statements, I'll create one master boolean for isValid, running separate validity checks that can individually disable it, for better readability
 
-        toggleConfirmationPage(!confirmationPage);
+        if(cardHolderName.length === 0){
+            console.log('cardHolderName.length === 0')
+            toggleCardHolderNameEmptyError(true);
+            isFormValid = false;
+        }
+
+        if(cardHolderNumber.length < 16){
+            console.log(`cardHolderNumber.length < 16`)
+            isFormValid = false;
+            togggleCardHolderLengthNotification(true);
+        }
+
+        console.log('Final validitiy check, isFormValid is currently ', isFormValid)
+        isFormValid && toggleConfirmationPage(!confirmationPage);
+        // Resetting state to true after tripping false state
+        // (isFormValid === false) && toggleIsFormValid(true);
     }
 
     const [cardHolderName, updateCardHolderName] = useState('');
     function changeCardHolderName(e){
         e.preventDefault();
+        // After this empty error is triggered, any state update, even to an empty field, hides the error notification
+        toggleCardHolderNameEmptyError(false);
+
         updateCardHolderName(e.target.value);
     }
+    const [cardHolderNameEmptyError, toggleCardHolderNameEmptyError] = useState(false);
 
     // This state is a parsed out version of CardHolderNumberDisplay without the spaces. 
     const [cardHolderNumber, updateCardHolderNumber] = useState('');
@@ -74,7 +96,7 @@ function CardDetailsForm(props) {
             updateCardHolderNumberDisplay(parts.join(' '))
 
             // Validation check for cardHolderNumber length
-            console.log(parts.join('').length)
+            // console.log(parts.join('').length)
             // if(parts.join('').length < 16) {
             //     togggleCardHolderLengthNotification(true);
             // } else {
@@ -89,7 +111,7 @@ function CardDetailsForm(props) {
             updateCardHolderNumberDisplay(v)
             
             // Validation check for cardHolderNumber length
-            console.log(v.length, "length");
+            // console.log(v.length, "length");
             v.length === 0 ? togggleCardHolderLengthNotification(false) : togggleCardHolderLengthNotification(true)
             // return ccnum;
         }
@@ -214,12 +236,15 @@ function CardDetailsForm(props) {
 
                         <div className='cardFieldContainer'>
                             <label htmlFor='cardholderNameField'>Cardholder Name</label>
-                            <input type="text" id="formCardholderName" name="cardholderNameField" value={cardHolderName} placeholder={'e.g. Jane Appleseed'} onChange={(e)=> {
+                            <input type="text" id={cardHolderNameEmptyError ? "formCardHolderNameInvalid" :"formCardholderName"} name="cardholderNameField" value={cardHolderName} placeholder={'e.g. Jane Appleseed'} onChange={(e)=> {
                                     changeCardHolderName(e);
-                            }} required/>
+                            }} onFocus={() => toggleCardHolderNameEmptyError(false)} required/>
                             <p className='blankFieldError'>
                                 Can't Be Blank
                             </p>
+                            {cardHolderNameEmptyError && <p className='emptyFieldError'>
+                                    Can't be blank!
+                                </p>}
 
                         </div> 
 
