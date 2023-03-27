@@ -250,10 +250,10 @@ function CardDetailsForm(props) {
 
                         <div className='cardFieldContainer'>
                             <label htmlFor='cardholderNumberField'>Card Number</label>
-                            <input type="text" id="formCardholderNumber" name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
+                            <input type="text" id={cardHolderLengthNotification ? "formCardHolderNumberInvalid" : "formCardholderNumber"} name="cardholderNumberField" value={''} placeholder={'e.g. 1234 5678 9123 0000'} onChange={(e) => {
                                     e.preventDefault();
                                     cc_format(e.target.value);
-                            }} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}' required/>
+                            }} onFocus={() => togggleCardHolderLengthNotification(false)} value={cardHolderNumberDisplay} pattern='\d{4}(\s\d{4}){3}' required/>
                                 <p className='blankFieldError'>
                                     Can't Be Blank
                                 </p>

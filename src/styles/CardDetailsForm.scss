@@ -225,6 +225,11 @@ input:placeholder-shown:focus {
     border: solid 1px _colors.$Red;   
 }
 
+#formCardHolderNumberInvalid {
+    border: solid 1px _colors.$Red;   
+}
+
+
 .blankFieldError {
     // display: none;
     visibility: hidden;
