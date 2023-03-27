@@ -41,6 +41,7 @@ function CardDetailsForm(props) {
         console.log(`Card EXP YY: `, cardHolderExpYY);
         console.log(`Card CVC: `, cardHolderCVC);
 
+        
 
         toggleConfirmationPage(!confirmationPage);
     }
@@ -71,13 +72,30 @@ function CardDetailsForm(props) {
             // return parts.join(' ');
             updateCardHolderNumber(parts.join(''));
             updateCardHolderNumberDisplay(parts.join(' '))
+
+            // Validation check for cardHolderNumber length
+            console.log(parts.join('').length)
+            // if(parts.join('').length < 16) {
+            //     togggleCardHolderLengthNotification(true);
+            // } else {
+
+            // }
+
+            parts.join('').length < 16 ? togggleCardHolderLengthNotification(true) : togggleCardHolderLengthNotification(false);
+
         } else {
             // console.log(v);
             updateCardHolderNumber(v)
             updateCardHolderNumberDisplay(v)
+            
+            // Validation check for cardHolderNumber length
+            console.log(v.length, "length");
+            v.length === 0 ? togggleCardHolderLengthNotification(false) : togggleCardHolderLengthNotification(true)
             // return ccnum;
         }
     }
+
+    const [cardHolderLengthNotification, togggleCardHolderLengthNotification] = useState(false);
 
     const [cardHolderExpMM, updateCardHolderExpMM] = useState('');
     function changeCardHolderExpMM(e){
@@ -214,6 +232,12 @@ function CardDetailsForm(props) {
                                 <p className='blankFieldError'>
                                     Can't Be Blank
                                 </p>
+                                {cardHolderLengthNotification && 
+                                <p className='lengthFieldError'>
+                                    Not Long Enough
+                                </p>
+                                }
+                                
                         </div>
 
                         <div className='cardExpCVCContainer'>
