@@ -18,7 +18,6 @@ This is a solution to the [Interactive card details form challenge on Frontend M
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -35,6 +34,9 @@ Users should be able to:
 
 ### Screenshot
 
+- Desktop Form
+
+
 ![](./screenshot.jpg)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
@@ -47,8 +49,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github](https://github.com/dianaroemer/card-details-form-interactive)
+- Live Site URL: [Github Livepage](https://dianaroemer.github.io/card-details-form-interactive/)
 
 ## My process
 
@@ -60,10 +62,10 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [Google Bard](bard.google.com) - Provided insights into understanding JS form validation
+- [How to block +,-,e in input type Number](https://stackoverflow.com/questions/39291997/how-to-block-e-in-input-type-number)
+- [Pixlr](pixlr.com) - Free Photoshop in browser, used to check design details like rgb of certain elements and number of pixels separating elements in layout.
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
@@ -74,36 +76,18 @@ A CSS filter effect also applies its effect to any visible children.
 Form error management in React can be simultaneously powerful and complicated. Using HTML's innate form management with CSS pseudo-class selectors gives a fairly straightforward method of generating intelligent forms, however React's internal state management can give much more finely grained control of how to build intelligent forms. For example, using a CSS sibling selector in an error field with its native styling set to `display:none;`, it can be easy to toggle the `display:box;` whenever the form generates an error according to a regex or empty criteria. That said, using a regex pattern or built-in HTML pseudo-states can be somewhat limiting in how and when I show the user errors. For example, I don't want to show any errors to the user unless they deliberately a validation criteria, or unless they try to submit an invalid form, in which case, I want to highlight all of the failed validation patterns for the user to fix. With React's built in state management, that should be fairly straightforward if I establish the HTML form with state management and validation in mind. 
   With this application, I didn't use a React based validation system, and instead am relying on primitive regex pattern validation. In the future, I would like to manage validation with React's state, and only show appropriate errors to the user when they're called for. For example, using state to track if a field is empty, whether the field is invalid, whether the user has tried to submit the form and return the appropriate errors back relative to the forms that fail validation (for example, the difference between showing the user "This field can't be empty!" and "This field is invalid!")
 
+  There is a known bug when responsively adjusting the page from desktop view to mobile wherein the stacking on the display cards breaks the page layout. Simply refresh the page to return to normal functionality.
+
+  Form validation is a journey in and of itself. I'm glad that I now understand the two types of validation, live validation with updates on each key-press (which is more difficulty, even with pattern expressions) and triggered validation, which will only check for validation on a single specific event, and can be more finely tuned. Using state management for validity provides some easy knobs to tweak different outputs in different contexts, though I have to wonder about the simplicity of HTML's fairly straightforward setCustomValidity, and would like to explore that functinoality more in the future.
 
 
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Explore form validation and semantic form structures more. I feel as if my default whenever doing any input of any kind is to immediately throw ``e.preventDefault()`` because built in event behavior doesn't always work intuitively. I'd like to understand events and event bubbling in better contexts. 
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+
 
 ### Useful resources
 

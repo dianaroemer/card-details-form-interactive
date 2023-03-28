@@ -151,6 +151,7 @@
     // opacity: 1;
     opacity: .99999; // This causes the z-index of the cardFormContainer to rise above the stacking context of the shadow created by the card's filter function
     width: 100%;
+    padding-top: 40px;
 }
 
 
@@ -203,6 +204,7 @@ legend span {
     opacity: .6;
     font-family: 'Space Grotesk', sans-serif;
 }
+
 
 
 
@@ -267,9 +269,15 @@ input:placeholder-shown:focus ~ p {
     transition: opacity .20s ease-in;
 }
 
-input:required {
-    // border: 1px solid _colors.$LightGrayishViolet;
+// input:required {
+//     border: 1px solid _colors.$LightGrayishViolet;
+// }
+
+input:focus {
+    border: solid 1px _colors.$VeryDarkViolet;
+    // color: red;
 }
+
 
 .lengthFieldError {
     position: inherit;
@@ -351,7 +359,7 @@ input:required {
 
 .thankYouContainer {
     // border: solid 1px red;
-    padding-top: 47px;
+    padding-top: 87px;
 }
 
 .thankYouLogo {
