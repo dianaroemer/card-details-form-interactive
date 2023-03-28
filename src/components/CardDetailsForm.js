@@ -8,6 +8,7 @@ import bgCardBack from '../assets/bg-card-back.png';
 import bgCardFront from '../assets/bg-card-front.png';
 import {ReactComponent as CardLogo} from '../assets/card-logo.svg';
 import {ReactComponent as ThankYouLogo} from '../assets/icon-complete.svg'
+import { type } from '@testing-library/user-event/dist/type';
 
 function CardDetailsForm(props) {
 
@@ -41,7 +42,7 @@ function CardDetailsForm(props) {
         console.log(`Cardholder Name: `, cardHolderName);
         console.log(`Card Number: `, cardHolderNumber);
         console.log(`Card EXP MM: `, cardHolderExpMM);
-        console.log(`Card EXP YY: `, cardHolderExpYY);
+        console.log(`Card EXP YY: `, cardHolderExpYY, typeof(Number(cardHolderExpYY)));
         console.log(`Card CVC: `, cardHolderCVC);
 
         // Instead of doing many nested if statements, I'll create one master boolean for isValid, running separate validity checks that can individually disable it, for better readability
@@ -58,10 +59,34 @@ function CardDetailsForm(props) {
             togggleCardHolderLengthNotification(true);
         }
 
+        if(cardHolderExpMM.length === 0 || cardHolderExpMM === '0'){
+            console.log(`cardHolderMM is either empty or set to invalid 0`);
+            isFormValid = false;
+            toggleCardHolderMMError(true);
+        }
+
+        // let numExpYY = Number(cardHolderExpYY)
+        if(cardHolderExpYY.length === 0){
+            console.log(`cardHolderYY is empty`);
+            isFormValid = false;
+            toggleCardHolderYYError(true);
+        } else if(Number(cardHolderExpYY) < 23) {
+            console.log(`Card is expired`);
+            isFormValid = false;
+            toggleCardHolderYYError(true);
+            toggleCardHolderYYExpired(true);
+        }
+
+        if(cardHolderCVC.length === 0){
+            console.log(`cardHolderCVC is empty`)
+            isFormValid = false;
+            toggleCardHolderCVCError(true);
+        }
+        
+
+
         console.log('Final validitiy check, isFormValid is currently ', isFormValid)
         isFormValid && toggleConfirmationPage(!confirmationPage);
-        // Resetting state to true after tripping false state
-        // (isFormValid === false) && toggleIsFormValid(true);
     }
 
     const [cardHolderName, updateCardHolderName] = useState('');
@@ -132,6 +157,7 @@ function CardDetailsForm(props) {
             updateCardHolderExpMM(newMM);
         }
     }
+    const [cardHolderMMError, toggleCardHolderMMError] = useState(false);
 
     const [cardHolderExpYY, updateCardHolderExpYY] = useState('');
     function changeCardHolderExpYY(e){
@@ -146,12 +172,16 @@ function CardDetailsForm(props) {
         }
         // updateCardHolderExpYY(e.target.value.slice(0,2));
     }
+    const [cardHolderYYError, toggleCardHolderYYError] = useState(false);
+    const [cardHolderYYExpired, toggleCardHolderYYExpired] = useState(false);
+
 
     const [cardHolderCVC, updateCardHolderCVC] = useState('');
     function changeCardHolderCVC(e){
         e.preventDefault()
         updateCardHolderCVC(e.target.value.slice(0, 3));
     }
+    const [cardHolderCVCError, toggleCardHolderCVCError] = useState(false);
 
 
     return(
@@ -159,7 +189,6 @@ function CardDetailsForm(props) {
 
             {/* I am Card Details Form. */}
 
-            {/* I will house sub-components */}
 
             <div className='cardDisplayContainer'>
                 
@@ -268,28 +297,44 @@ function CardDetailsForm(props) {
                         <div className='cardExpCVCContainer'>
                             <div className='cardFieldContainer' id='cardFieldExpMM'>
                                 <label htmlFor='cardExpFieldMM'>EXP. Date </label>
-                                <input type="number" id="formCardExpMM" name="cardExpFieldMM" value={cardHolderExpMM} onChange={(e) => 
+                                <input type="number" id={cardHolderMMError ? "formCardExpMMInvalid" : "formCardExpMM"} name="cardExpFieldMM" value={cardHolderExpMM} onChange={(e) => 
                                         changeCardHolderExpMM(e)} onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()}
+                                        onFocus={() => toggleCardHolderMMError(false)}
                                          placeholder={'MM'} maxLength="2" required/>
                                 <p className='blankFieldError'>
                                     Can't Be Blank
                                 </p>
+                                {cardHolderMMError && <p className='emptyFieldError'>
+                                    Can't Be Blank
+                                </p>}
+                                
                             </div>
 
                             <div className='cardFieldContainer' id='cardFieldExpYY'>
                                 <label htmlFor='cardExpFieldYY'> (MM/YY) </label>
-                                <input type="number" id="formCardExpYY" name="cardExpFieldYY" value={cardHolderExpYY} onChange={(e) => changeCardHolderExpYY(e)} maxLength="2" placeholder={'YY'} required/>
+                                <input type="number" id={cardHolderYYError ? "formCardExpYYInvalid" : "formCardExpYY"} name="cardExpFieldYY" value={cardHolderExpYY} onChange={(e) => changeCardHolderExpYY(e)} onFocus={() => {
+                                        toggleCardHolderYYError(false);
+                                        toggleCardHolderYYExpired(false);
+                                }} maxLength="2" placeholder={'YY'} required/>
                                 <p className='blankFieldError'>
                                     Can't Be Blank
                                 </p>
+                                {cardHolderYYError && <p className='emptyFieldError'>
+                                    {cardHolderYYExpired ? 'Expired' : `Can't Be Blank`}
+                                </p>}
                             </div>
 
                             <div className='cardFieldContainer' id='cardFieldCVC'>
                                 <label htmlFor='cardExpFieldCVC'> CVC </label>
-                                <input type="number" id="formCardExpCVC" name="cardExpFieldCVC" value={cardHolderCVC} onChange={(e) => changeCardHolderCVC(e)} onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} placeholder={'e.g. 123'} maxLength="3" required/>
+                                <input type="number" id={cardHolderCVCError ? "formCardExpCVCInvalid" : "formCardExpCVC"} name="cardExpFieldCVC" value={cardHolderCVC} onChange={(e) => changeCardHolderCVC(e)} onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} onFocus={() => {
+                                        toggleCardHolderCVCError(false)
+                                }} placeholder={'e.g. 123'} maxLength="3" required/>
                                 <p className='blankFieldError'>
                                     Can't Be Blank
                                 </p>
+                                {cardHolderCVCError && <p className='emptyFieldError'>
+                                        Can't Be Blank
+                                    </p>}
                             </div>
 
 
