@@ -94,12 +94,7 @@ function CardDetailsForm(props) {
             toggleCardHolderCVCError(true);
         }
         
-
-
         // console.log('Final validitiy check, isFormValid is currently ', isFormValid)
-
-
-
         isFormValid && toggleConfirmationPage(!confirmationPage);
     }
 
