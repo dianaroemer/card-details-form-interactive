@@ -33,59 +33,73 @@ function CardDetailsForm(props) {
     function clickConfirm(e){
         e.preventDefault();
 
+        if(confirmationPage){
+            // Reset all content to empty state
+            // console.log('Resetting Form')
+            updateCardHolderName('');
+            updateCardHolderNumberDisplay('');
+            updateCardHolderExpMM('');
+            updateCardHolderExpYY('');
+            updateCardHolderCVC('');
+            toggleConfirmationPage(false);
+            return;
+        }
         
 
         // Perform validation check to decide if page is correct - if no validation errors, go to confirmation page, else show errors
         let isFormValid = true;
-        console.log(`Performing state check`);
-        console.log(`Initial isFormValid`, isFormValid);
-        console.log(`Cardholder Name: `, cardHolderName);
-        console.log(`Card Number: `, cardHolderNumber);
-        console.log(`Card EXP MM: `, cardHolderExpMM);
-        console.log(`Card EXP YY: `, cardHolderExpYY, typeof(Number(cardHolderExpYY)));
-        console.log(`Card CVC: `, cardHolderCVC);
+        // console.log(`Performing state check`);
+        // console.log(`Initial isFormValid`, isFormValid);
+        // console.log(`Cardholder Name: `, cardHolderName);
+        // console.log(`Card Number: `, cardHolderNumber);
+        // console.log(`Card EXP MM: `, cardHolderExpMM);
+        // console.log(`Card EXP YY: `, cardHolderExpYY, typeof(Number(cardHolderExpYY)));
+        // console.log(`Card CVC: `, cardHolderCVC);
 
         // Instead of doing many nested if statements, I'll create one master boolean for isValid, running separate validity checks that can individually disable it, for better readability
 
         if(cardHolderName.length === 0){
-            console.log('cardHolderName.length === 0')
+            // console.log('cardHolderName.length === 0')
             toggleCardHolderNameEmptyError(true);
             isFormValid = false;
         }
 
         if(cardHolderNumber.length < 16){
-            console.log(`cardHolderNumber.length < 16`)
+            // console.log(`cardHolderNumber.length < 16`)
             isFormValid = false;
             togggleCardHolderLengthNotification(true);
         }
 
         if(cardHolderExpMM.length === 0 || cardHolderExpMM === '0'){
-            console.log(`cardHolderMM is either empty or set to invalid 0`);
+            // console.log(`cardHolderMM is either empty or set to invalid 0`);
             isFormValid = false;
             toggleCardHolderMMError(true);
         }
 
         // let numExpYY = Number(cardHolderExpYY)
         if(cardHolderExpYY.length === 0){
-            console.log(`cardHolderYY is empty`);
+            // console.log(`cardHolderYY is empty`);
             isFormValid = false;
             toggleCardHolderYYError(true);
         } else if(Number(cardHolderExpYY) < 23) {
-            console.log(`Card is expired`);
+            // console.log(`Card is expired`);
             isFormValid = false;
             toggleCardHolderYYError(true);
             toggleCardHolderYYExpired(true);
         }
 
         if(cardHolderCVC.length === 0){
-            console.log(`cardHolderCVC is empty`)
+            // console.log(`cardHolderCVC is empty`)
             isFormValid = false;
             toggleCardHolderCVCError(true);
         }
         
 
 
-        console.log('Final validitiy check, isFormValid is currently ', isFormValid)
+        // console.log('Final validitiy check, isFormValid is currently ', isFormValid)
+
+
+
         isFormValid && toggleConfirmationPage(!confirmationPage);
     }
 
